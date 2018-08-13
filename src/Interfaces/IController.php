@@ -29,5 +29,14 @@ namespace FcPhp\Controller\Interfaces
          * @return bool
          */
         public function hasService(string $service) :bool;
+        
+        /**
+         * Method to configure callback
+         *
+         * @param string $name Name of callback
+         * @param object $callback Callback to execute
+         * @return void
+         */
+        public function callback(string $name, object $callback) :void;
     }
 }
