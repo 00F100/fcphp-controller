@@ -29,6 +29,17 @@ class ControllerUnitTest extends TestCase
     {
         $this->instance->getService('notFound');
     }
+
+    public function testCallbackService()
+    {
+        $instance = new TestController();
+        $instance->callback('callbackService', function(string $service, $instance) {
+            $this->assertEquals('test', $service);
+            $this->assertInstanceOf(TestService::class, $instance);
+        });
+        $instance->setService('test', new TestService());
+        $instance->getService('test');
+    }
 }
 
 class TestController extends Controller implements IController

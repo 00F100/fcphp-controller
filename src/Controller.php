@@ -13,6 +13,11 @@ namespace FcPhp\Controller
         private $services = [];
 
         /**
+         * @var object $serviceCallback Callback of service
+         */
+        private $callbackService;
+
+        /**
          * Method to configure service
          *
          * @param string $service Name of service
@@ -34,7 +39,9 @@ namespace FcPhp\Controller
         public function getService(string $service)
         {
             if($this->hasService($service)) {
-                return $this->services[$service];
+                $serviceInstance = $this->services[$service];
+                $this->callbackService($service, $serviceInstance);
+                return $serviceInstance;
             }
             throw new ServiceNotFoundException();
             
@@ -49,6 +56,35 @@ namespace FcPhp\Controller
         public function hasService(string $service) :bool
         {
             return array_key_exists($service, $this->services);
+        }
+
+        /**
+         * Method to configure callback
+         *
+         * @param string $name Name of callback
+         * @param object $callback Callback to execute
+         * @return void
+         */
+        public function callback(string $name, object $callback) :void
+        {
+            if(property_exists($this, $name)) {
+                $this->{$name} = $callback;
+            }
+        }
+
+        /**
+         * Method to configure callback
+         *
+         * @param string $service Name of service
+         * @param mixed $instance Instance of Service
+         * @return void
+         */
+        private function callbackService(string $service, $instance) :void
+        {
+            $callbackService = $this->callbackService;
+            if(is_object($callbackService)) {
+                $callbackService($service, $instance);
+            }
         }
     }
 }

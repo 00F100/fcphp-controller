@@ -59,3 +59,20 @@ namespace Example
 }
 
 ```
+
+## Controller Callback
+
+```php
+
+use Example\ExampleController;
+
+$instance = new ExampleController(UserService(), ProfileService(), AddressService());
+
+// Callback on find service using "getService()"...
+$instance->callback('callbackService', function(string $service, $instance) {
+
+    // Your code here...
+
+});
+
+```
