@@ -13,7 +13,8 @@
         }
     ],
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.2",
+        "00f100/fcphp-service": "*"
     },
     "require-dev": {
         "00f100/phpdbug": "*",

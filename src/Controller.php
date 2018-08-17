@@ -2,6 +2,7 @@
 
 namespace FcPhp\Controller
 {
+    use FcPhp\Service\Interfaces\IService;
     use FcPhp\Controller\Interfaces\IController;
     use FcPhp\Controller\Exceptions\ServiceNotFoundException;
 
@@ -21,10 +22,10 @@ namespace FcPhp\Controller
          * Method to configure service
          *
          * @param string $service Name of service
-         * @param mixed $instance Instance of service
+         * @param FcPhp\Service\Interfaces\IService $instance Instance of service
          * @return void
          */
-        public function setService(string $service, $instance) :void
+        public function setService(string $service, IService $instance) :void
         {
             $this->services[$service] = $instance;
         }
@@ -34,9 +35,9 @@ namespace FcPhp\Controller
          *
          * @param string $service Name of service
          * @throws FcPhp\Controller\Exceptions\ServiceNotFoundException
-         * @return mixed
+         * @return FcPhp\Service\Interfaces\IService
          */
-        public function getService(string $service)
+        public function getService(string $service) :IService
         {
             if($this->hasService($service)) {
                 $serviceInstance = $this->services[$service];
@@ -44,7 +45,6 @@ namespace FcPhp\Controller
                 return $serviceInstance;
             }
             throw new ServiceNotFoundException();
-            
         }
 
         /**
@@ -79,7 +79,7 @@ namespace FcPhp\Controller
          * @param mixed $instance Instance of Service
          * @return void
          */
-        private function callbackService(string $service, $instance) :void
+        private function callbackService(string $service, IService $instance) :void
         {
             $callbackService = $this->callbackService;
             if(is_object($callbackService)) {

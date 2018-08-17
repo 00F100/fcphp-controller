@@ -2,25 +2,27 @@
 
 namespace FcPhp\Controller\Interfaces
 {
+    use FcPhp\Service\Interfaces\IService;
+
     interface IController
     {
         /**
          * Method to configure service
          *
          * @param string $service Name of service
-         * @param mixed $instance Instance of service
+         * @param FcPhp\Service\Interfaces\IService $instance Instance of service
          * @return void
          */
-        public function setService(string $service, $instance) :void;
+        public function setService(string $service, IService $instance) :void;
 
         /**
          * Method to return service
          *
          * @param string $service Name of service
          * @throws FcPhp\Controller\Exceptions\ServiceNotFoundException
-         * @return mixed
+         * @return FcPhp\Service\Interfaces\IService
          */
-        public function getService(string $service);
+        public function getService(string $service) :IService;
 
         /**
          * Method to verify service exists

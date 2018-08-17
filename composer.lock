@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff17e62da4893531fb550867da225efb",
-    "packages": [],
+    "content-hash": "5e5efd0cfb342e9948b9fdfde194ccaa",
+    "packages": [
+        {
+            "name": "00f100/fcphp-service",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/00F100/fcphp-service.git",
+                "reference": "56c8868a79fd7856b4cd5f4bd8925379b064ca3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/00F100/fcphp-service/zipball/56c8868a79fd7856b4cd5f4bd8925379b064ca3c",
+                "reference": "56c8868a79fd7856b4cd5f4bd8925379b064ca3c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "00f100/phpdbug": "*",
+                "phpunit/phpunit": "6.*"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "FcPhp\\Service\\": "src/",
+                    "FcPhp\\Service\\Test\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "João Moraes",
+                    "email": "joaomoraesbr@gmail.com",
+                    "homepage": "https://github.com/00f100"
+                }
+            ],
+            "description": "Package to manipulate services of application",
+            "homepage": "https://github.com/00f100/fcphp-service",
+            "keywords": [
+                "PHP7",
+                "fcphp",
+                "manipulate",
+                "package",
+                "services"
+            ],
+            "time": "2018-08-15T00:56:09+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "00f100/phpdbug",
